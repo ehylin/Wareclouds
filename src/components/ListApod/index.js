@@ -4,21 +4,29 @@ import {Apod, Loading} from '../../components'
 
 
 
-const ListApod = ({result}) => {
+const ListApod = ({result, loading}) => {
 
     console.log(result);
 
+    
+
     return(
         <Container>
-      <Row>
-     {result.map((res)=>(
+          <Row>
+          {loading || !result ? (
+          <Loading />
+        ) : (
+          result.map((res) => (
             <Apod 
-            key={res.title}
-            res={res}
-            />
-        ))}
-      </Row>
-    </Container>
+                    key={res.title}
+                    res={res}
+                    />
+          ))
+        )}
+              </Row>
+        </Container>
+
+        
     )
 }
 

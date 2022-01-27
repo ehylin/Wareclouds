@@ -1,25 +1,19 @@
 import React, { useState, useEffect} from 'react';
-import {Form, Button} from 'react-bootstrap';
-import DatePicker from "react-datepicker";
+import {Form, Button, Alert, Row, Col, Container} from 'react-bootstrap';
 
 
+const Formt = ({ setConsult, date, setDate, loading}) => {
 
-const Formt = ({ setConsult, date, setDate}) => {
 
+const [error, setError] = useState(false);
 
-const [validated, setValidated] = useState(false);
-
-// const [startDate, setStartDate] = useState('2022/01/25');
-// const [endDate, setEndDate] = useState('');
-
-//extraer 
 const { startDate, endDate } = date;
 
 
 
 
-const handleChange2 = e => {
-    //actualizar el state
+const handleChange = e => {
+   
     setDate({
         ...date,
         [e.target.name] : e.target.value
@@ -27,57 +21,60 @@ const handleChange2 = e => {
 
 }
 
+const handleSubmit = e => {
+    e.preventDefault();
 
-
-const handleSubmit = (event) => {
-    console.log("desde el boton")
-    event.preventDefault();
-
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-
-      event.stopPropagation();
+    if(startDate.trim() === '' || endDate.trim() === ''){
+        setError(true);
+        return;
     }
-
-    setValidated(true);
-
-    setConsult(true)
-    
+    setError(false)
+    setConsult(true) 
+    //loading(true)  
 }
 
     return(
-       <div>
-         <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <div className="bg-img">
+          <Container>
+           <h2 className="text-center pt-4 mb-5 letter">Búsqueda espacial</h2>
+      
+         <Form onSubmit={handleSubmit} className="pb-4">
+             {error ? <Alert variant="danger">Todos los campos son obligatorios</Alert> : null}
 
-
-            <Form.Label>Elija una fecha de inicio</Form.Label>
-            <Form.Group id="starDate">
+            <Row className="mb-3">
+           
+            <Form.Group id="starDate" as={Col} md="6">
+            <Form.Label className="letter">Seleccione una fecha de inicio</Form.Label>
                 <Form.Control
-                    required 
+                     
                     type='date'
                     value={startDate}
                     name='startDate'
-                    onChange={handleChange2}
+                    onChange={handleChange}
                 />
             </Form.Group>
 
-            <Form.Label>Elija una fecha final</Form.Label>
-            <Form.Group id="endDate">
+            <Form.Group id="endDate" as={Col} md="6">
+
+            <Form.Label className="letter">Seleccione una fecha final</Form.Label>
                 <Form.Control
-                    required 
+                     
                     type='date'
                     value={endDate}
                     name='endDate'
-                    onChange={handleChange2}
+                    onChange={handleChange}
                 />
             </Form.Group>
 
-            <Button variant="info" type="submit">
-                Submit
+            </Row>
+            <Button className="bg-btn" variant="info" type="submit">
+                Buscar
             </Button>
+            
          </Form>
-  
-       </div>
+         </Container>
+         </div>
+    
     )
 }
 
