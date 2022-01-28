@@ -1,6 +1,8 @@
 import React, {Fragment,useState, useEffect} from 'react';
 import {Formt, ListApod } from '../../components'
+import { url, apikey } from '../../utils/constants'
 import axios from 'axios'
+
 
 const Search = () => {
     
@@ -12,57 +14,48 @@ const Search = () => {
       const [consult, setConsult] = useState(false);
       const [result, setResult] = useState([]);
       const [loading, setLoading ] = useState(false);
+      const [error, setError] = useState(null);
 
     const { startDate , endDate} = date;
 
 
 useEffect(() => {
              
-const petGet = async () =>{    
-    if(consult) { 
-        setLoading(true); 
-        const appId = 'BW6Mt8fgncio6MShxsw0vhDCmK7tzbx0faKjnYXp'
-        const url = 'https://api.nasa.gov/planetary/apod'
-    
-        await axios.get(url, {
-            params:{
-                api_key: appId,
-                start_date: startDate,
-                end_date: endDate
-            }
-    }).then(response=>{
-        console.log(response.data);
-        const result = (response);
-     
+    const petGet = async () =>{    
+        if(consult) { 
+            setLoading(true); 
+        
+            await axios.get(url, {
+                params:{
+                    api_key: apikey,
+                    start_date: startDate,
+                    end_date: endDate
+                }
+        }).then(response=>{
+            const result = (response);
+            setResult(result.data);
+            setConsult(false);
+            setLoading(false);
 
-        setResult(result.data);
-        setConsult(false);
-        setLoading(false);
-
-    }).catch(error=>{
-        console.log(error);
-        setLoading(false);
-    })  
+        }).catch(error=>{
+            setError(error);
+            setLoading(false);
+        })  
     }
-}
+    }
+    petGet();
 
-        petGet();
-
-     },[consult]);
+},[consult]);
 
     return(
         <Fragment>
-  
-
-                    <Formt 
-                        setConsult={setConsult}
-                        date={date}
-                        setDate={setDate}
-                        setLoading={loading}
-                        
-                    />
-
-                <ListApod result={result}  loading={loading}/>
+            <Formt 
+                setConsult={setConsult}
+                date={date}
+                setDate={setDate}
+                setLoading={loading}         
+            />
+            <ListApod result={result}  loading={loading} error={error}/>
         </Fragment>    
     )
 }

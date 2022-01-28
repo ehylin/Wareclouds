@@ -1,6 +1,29 @@
 # App initial
 
+# App React JS Hooks: buscador según fecha, mostrando resultado de la app Nasa, Apod..
+
+_Realizado como prueba técnica para Wareclouds.._
+
+### Para poder realizar la búsqueda necesita generar una key, desde:
+
+https://api.nasa.gov/
+
+### Generate API Key
+
+_Luego de generar su propia key cópiela y péguela dentro de la carpeta utils_
+_se encuentra un archivo **constants.js** en la variable **apikey** pegar la key_
+
+## Ya está listo para realizar la búsqueda
+
+## Para iniciar el proyecto debe ejecutar
+
 ### `npm instal`
+
+### `npm start`
+
+Con ❤️ por [ehylinOlezjua](https://github.com/ehylin)
+
+#################
 
 # Getting Started with Create React App
 

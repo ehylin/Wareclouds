@@ -4,34 +4,29 @@ import {Form, Button, Alert, Row, Col, Container} from 'react-bootstrap';
 
 const Formt = ({ setConsult, date, setDate, loading}) => {
 
-
-const [error, setError] = useState(false);
-
-const { startDate, endDate } = date;
-
-
-
-
-const handleChange = e => {
+    const [error, setError] = useState(false);
+    const { startDate, endDate } = date;
+    
+    const handleChange = e => {
    
-    setDate({
-        ...date,
-        [e.target.name] : e.target.value
-    });
+        setDate({
+            ...date,
+            [e.target.name] : e.target.value
+        });
 
-}
-
-const handleSubmit = e => {
-    e.preventDefault();
-
-    if(startDate.trim() === '' || endDate.trim() === ''){
-        setError(true);
-        return;
     }
-    setError(false)
-    setConsult(true) 
-    //loading(true)  
-}
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        if(startDate.trim() === '' || endDate.trim() === ''){
+            setError(true);
+            return;
+        }
+        setError(false)
+        setConsult(true) 
+        //loading(true)  
+    }
 
     return(
       <div className="bg-img">
@@ -55,7 +50,6 @@ const handleSubmit = e => {
             </Form.Group>
 
             <Form.Group id="endDate" as={Col} md="6">
-
             <Form.Label className="letter">Seleccione una fecha final</Form.Label>
                 <Form.Control
                      
