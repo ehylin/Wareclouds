@@ -21,7 +21,9 @@ code {
 .letter {
   color: #fff;
 }
-
+a {
+  text-decoration: none !important;
+}
 .bg-img {
   background-color: #0a083b;
 }
