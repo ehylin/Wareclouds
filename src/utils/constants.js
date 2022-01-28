@@ -1,2 +1,4 @@
-export const apikey = 'BW6Mt8fgncio6MShxsw0vhDCmK7tzbx0faKjnYXp'
+//Pegar tu api Key generada desde https://api.nasa.gov/
+export const apikey = ''
+
 export const url = 'https://api.nasa.gov/planetary/apod'
