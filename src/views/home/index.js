@@ -1,4 +1,4 @@
-import React, {Fragment,useState, useEffect} from 'react';
+import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom'
 import {Card, Container, Row,Col} from 'react-bootstrap';
 
@@ -14,7 +14,7 @@ const Home = () => {
             <Row >
             <Col xs={12} md={6}>
             <Card>
-                <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2020/03/26/02/01/astronaut-4968983_960_720.jpg" height="428"/>
+                <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2020/03/26/02/01/astronaut-4968983_960_720.jpg"/>
                 <Card.Body>
                 <Card.Text>
                     Some quick example text to build on the card title and make up the bulk

@@ -5,7 +5,7 @@ import {Card,Col} from 'react-bootstrap';
 
 const Apod = ({res}) => {
 
-    const {title, explanation, date, copyright, url } = res
+    const {title, date, copyright, url } = res
     return(
         <Col xs={12} md={4} lg={3}>
            <Card className="mt-4" >

@@ -1,8 +1,8 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState} from 'react';
 import {Form, Button, Alert, Row, Col, Container} from 'react-bootstrap';
 
 
-const Formt = ({ setConsult, date, setDate, loading}) => {
+const Formt = ({ setConsult, date, setDate,  title}) => {
 
     const [error, setError] = useState(false);
     const { startDate, endDate } = date;
@@ -25,13 +25,13 @@ const Formt = ({ setConsult, date, setDate, loading}) => {
         }
         setError(false)
         setConsult(true) 
-        //loading(true)  
+      
     }
 
     return(
       <div className="bg-img">
           <Container>
-           <h2 className="text-center pt-4 mb-5 letter">Búsqueda espacial</h2>
+           <h2 className="text-center pt-4 mb-5 letter">{title}</h2>
       
          <Form onSubmit={handleSubmit} className="pb-4">
              {error ? <Alert variant="danger">Todos los campos son obligatorios</Alert> : null}

@@ -52,8 +52,8 @@ useEffect(() => {
             <Formt 
                 setConsult={setConsult}
                 date={date}
-                setDate={setDate}
-                setLoading={loading}         
+                setDate={setDate} 
+                title="Búsqueda espacial"        
             />
             <ListApod result={result}  loading={loading} error={error}/>
         </Fragment>    

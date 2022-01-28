@@ -1,7 +1,7 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
 
-//import "./Loading.scss";
+
 
 export default function Loading() {
   return (
